@@ -2,7 +2,7 @@ package service_layer;
 
 import java.io.IOException;
 
-public class FreeDictionary {
+public class FreeDictionary extends Container{
 
     private static char[] charArray;
 
@@ -33,8 +33,10 @@ public class FreeDictionary {
 
     private static void printAllPermutationRec( int start, int end){
         if (start == end) {
-            if(findOnline(String.valueOf(charArray)))
-                System.out.println(charArray);
+            if(findOnline(String.valueOf(charArray))){
+                //System.out.println(String.valueOf(charArray)+ " free API");
+                Container.getContainer().add(String.valueOf(charArray));
+            }
             return;
         }
 
@@ -53,5 +55,9 @@ public class FreeDictionary {
         return charArray;
     }
 
+    public static void main(String[] args) {
+       printAllPermutation("state");
+        System.out.print(Container.getContainer());
 
+    }
 }

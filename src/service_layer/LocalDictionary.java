@@ -5,9 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 
-public class LocalDictionary {
+public class LocalDictionary extends Container{
     private static HashSet<String> dictionary = new HashSet<>();
-
 
     public static void permuteLocalDictionary(String str) throws IOException {
         if(dictionary.isEmpty())
@@ -16,8 +15,11 @@ public class LocalDictionary {
     }
     private static void Permutations(String prefix, String str) {
         if(0 == str.length()){
-            if(isInDictionary(prefix))
-                System.out.print(prefix + " ");
+            if(isInDictionary(prefix)){
+                //System.out.println(prefix + " local");
+                Container.getContainer().add(prefix);
+            }
+
             return;
         }
         int length = str.length();
