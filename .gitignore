@@ -1,0 +1,11 @@
+# Project exclude paths
+
+*
+
+!*.c
+!.gitignore
+!*.md
+!*.java
+!*.h
+!/**/
+
