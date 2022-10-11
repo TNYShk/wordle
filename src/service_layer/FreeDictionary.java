@@ -34,7 +34,7 @@ public class FreeDictionary extends Container{
     private static void printAllPermutationRec( int start, int end){
         if (start == end) {
             if(findOnline(String.valueOf(charArray))){
-                //System.out.println(String.valueOf(charArray)+ " free API");
+                System.out.println(String.valueOf(charArray)+ " free API");
                 Container.getContainer().add(String.valueOf(charArray));
             }
             return;
@@ -56,8 +56,8 @@ public class FreeDictionary extends Container{
     }
 
     public static void main(String[] args) {
-       printAllPermutation("state");
-        System.out.print(Container.getContainer());
+       printAllPermutation("lab");
+        //System.out.print(Container.getContainer());
 
     }
 }
