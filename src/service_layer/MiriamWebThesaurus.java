@@ -2,6 +2,7 @@ package service_layer;
 
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -21,13 +22,14 @@ public class MiriamWebThesaurus  {
         PermutationsBee("",str,letter);
     }
     private static void PermutationsBee(String prefix, String str, String letter) {
-        if(FreeDictionary.findOnline(str) && str.length()>3){
+
+      /*  if(FreeDictionary.findOnline(str) && str.length()>3){
 
             if(!thesaurus.contains(str))
                 System.out.print(str+ " ,");
 
             thesaurus.add(str);
-        }
+        }*/
 
         if(0 == str.length()){
 
@@ -75,8 +77,11 @@ public class MiriamWebThesaurus  {
         for(String s: localThesau) {
             s = s.replace("[", "");
             s = s.replace("]", "");
+            s= s.replace("\"","");
+            s = s.trim();
+
             if(s.contains(mustHaveLetter) && hasAllLetters(s)){
-                if(!thesaurus.contains(s))
+               if(!thesaurus.contains(s))
                     System.out.print(s+ " ,");
 
                 thesaurus.add(s);
@@ -93,15 +98,8 @@ public class MiriamWebThesaurus  {
 
     public static boolean hasAllLetters(String str){
 
-          if(!beeWordSet.contains('s') && str.charAt(str.length()-2) == 's'){
 
-              str = str.replace("s","");
-
-
-          }
-
-
-      for(int i=1;i<str.length()-1;++i){
+      for(int i=0;i<str.length();++i){
           if(!beeWordSet.contains(str.charAt(i)))
               return false;
       }
@@ -171,11 +169,12 @@ public class MiriamWebThesaurus  {
     public static void main(String[] args) {
         //isInMiriamWebsterDict("knave");
         //thesaurusMW("formula");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(timestamp);
+        spellingBMW("formal","o");
 
-        spellingBMW("formula","o");
-
-        System.out.println(thesaurus);
-
+        System.out.println("\n"+thesaurus);
+        System.out.println(new Timestamp(System.currentTimeMillis()));
 
 
     }
