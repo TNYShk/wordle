@@ -11,12 +11,13 @@ public class LocalDictionary extends Container{
     public static void permuteLocalDictionary(String str) throws IOException {
         if(dictionary.isEmpty())
             loadDictionary();
-        Permutations("", str);
+        System.out.println("done loading");
+        Permutations1("", str);
     }
-    private static void Permutations(String prefix, String str) {
+    private static void Permutations1(String prefix, String str) {
         if(0 == str.length()){
             if(isInDictionary(prefix)){
-                //System.out.println(prefix + " local");
+                System.out.println(prefix + " local");
                 Container.getContainer().add(prefix);
             }
 
@@ -24,7 +25,7 @@ public class LocalDictionary extends Container{
         }
         int length = str.length();
         for (int i = 0; i < length; ++i) {
-            Permutations(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, length));
+            Permutations1(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, length));
         }
     }
     private static boolean isInDictionary(String word){

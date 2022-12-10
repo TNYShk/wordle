@@ -56,7 +56,7 @@ public class HttpUtil {
         return response;
     }
 
-    public static String[] readMultipleLinesResponse() throws IOException {
+    public static List<String> readMultipleLinesResponse() throws IOException {
         InputStream inputStream = null;
         if (httpConn != null) {
             inputStream = httpConn.getInputStream();
@@ -73,7 +73,7 @@ public class HttpUtil {
             }
         }
 
-        return  response.toArray(new String[0]);
+        return  response;
     }
 
     /**

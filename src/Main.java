@@ -11,9 +11,11 @@ import static service_layer.MiriamWebThesaurus.*;
 public class Main extends Container {
 
     public static void main(String[] args) throws IOException {
-        String word = "poamley";
+        String word = "wudmy";
         permuteLocalDictionary(word);
+
         System.out.println(getContainer());
+
         System.out.println("done with local file");
         printAllPermutation(word);
         System.out.println("done with free API\n");
@@ -22,6 +24,7 @@ public class Main extends Container {
 
         System.out.println(getContainer());
         System.out.println("\n Thesaurus API");
+
 
 
    /*   Spelling Bee NYT *****

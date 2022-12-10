@@ -19,6 +19,7 @@ public class MiriamWebThesaurus  {
         BEEWORD = str;
         beeWordSet = IntStream.range(0,BEEWORD.length()).mapToObj(BEEWORD::charAt).collect(Collectors.toCollection(LinkedHashSet::new));
         System.out.println(beeWordSet);
+        isInMiriamWebsterDict(str,letter);
         PermutationsBee("",str,letter);
     }
     private static void PermutationsBee(String prefix, String str, String letter) {
@@ -77,7 +78,7 @@ public class MiriamWebThesaurus  {
         for(String s: localThesau) {
             s = s.replace("[", "");
             s = s.replace("]", "");
-            s= s.replace("\"","");
+            s = s.replace("\"","");
             s = s.trim();
 
             if(s.contains(mustHaveLetter) && hasAllLetters(s)){
@@ -137,9 +138,11 @@ public class MiriamWebThesaurus  {
         try {
             HttpUtil.sendGetRequest(requestURL);
             String result = HttpUtil.readSingleLineResponse();
-
+            //List<String> multiResult = HttpUtil.readMultipleLinesResponse();
             //parseResult(result);
             System.out.println(result);
+            //System.out.println();
+            //System.out.println(multiResult);
             if (!result.isEmpty()){
                 isFound = true;
             }
@@ -167,14 +170,15 @@ public class MiriamWebThesaurus  {
     // ******************* end of Wordle MW Thesaurus ***** //
 
     public static void main(String[] args) {
-        //isInMiriamWebsterDict("knave");
-        //thesaurusMW("formula");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        System.out.println(timestamp);
-        spellingBMW("formal","o");
+        //isInMiriamWebsterDict("qeaul");
+        //thesaurusMW("qeaul");
+
+        System.out.println(new Timestamp(System.currentTimeMillis()));
+        spellingBMW("tyrnaic","y");
 
         System.out.println("\n"+thesaurus);
         System.out.println(new Timestamp(System.currentTimeMillis()));
+
 
 
     }
